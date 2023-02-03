@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>GenPC | Главная</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap_index/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_index/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_index/Hero-Carousel-images.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_index/Navbar-Centered-Links-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_index/Pricing-Centered-badges.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_search/Search-Input-Responsive-with-Icon.css') }}">
+</head>
+
+<body style="background: rgb(50,50,50);">
+    <nav class="navbar navbar-light navbar-expand-md py-3" style="background: #ffffff;position: static;overflow: visible;display: block;">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="{{url_for('index')}}"><span class="fs-2 fw-semibold text-dark rubberBand animated">GenPC</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-3"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-3">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active link-dark rubberBand animated" href="{{url_for('contacts')}}">Контакты</a></li>
+                    <li class="nav-item"><a class="nav-link link-dark rubberBand animated" href="#delivery">Доставка</a></li>
+                    <li class="nav-item"><a class="nav-link link-dark rubberBand animated" href="#reviews">Отзывы</a></li>
+                </ul><a href ="{{url_for('cabinet')}}"><button class="btn btn-dark rubberBand animated" type="button">Личный кабинет</button></a>
+            </div>
+        </div>
+    </nav>
+    <div class="carousel slide" data-bs-ride="carousel" id="carousel-1" style="height: 600px;">
+        <div class="carousel-inner h-100">
+            <div class="carousel-item active h-100"><img class="w-100 d-block position-absolute h-100 fit-cover" src="https://digital-razor.ru/upload/iblock/d85/d852c53451fd0866a9152c0eab03d90b.png" alt="Slide Image" style="z-index: -1;">
+                <div class="container d-flex flex-column justify-content-center h-100">
+                    <div class="row">
+                        <div class="col-md-6 col-xl-4 offset-md-2 offset-xxl-1">
+                            <div style="max-width: 350px;margin-top: 120px;">
+                                <h1 class="text-uppercase fs-1 fw-bold text-danger">Oreon pc</h1>
+                                <p class="text-light my-3">NVIDIA® GeForce RTX™ 4080 обеспечивает высочайшую производительность и функции, <br>необходимые геймерам и авторам контента. Оживляйте игры и воплощайте в жизнь творческие проекты с помощью трассировки лучей и графики на основе ИИ.<br></p><a class="btn btn-primary btn-lg me-2" role="button" href="#">Подробнее</a>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 offset-xxl-1"><img src="https://digital-razor.ru/upload/iblock/6ff/6ffcfe18f20c1fec828b7e9c25bf74c9.png" width="600" height="550"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item h-100"><img class="w-100 d-block position-absolute h-100 fit-cover" src="https://digital-razor.ru/upload/iblock/b52/b52ac90f7c65ed76e178307ce999ee55.png" alt="Slide Image" style="z-index: -1;">
+                <div class="container d-flex flex-column justify-content-center h-100">
+                    <div class="row">
+                        <div class="col-md-6 col-xl-4 offset-md-2 offset-xxl-1">
+                            <div style="max-width: 350px;">
+                                <h1 class="text-uppercase fw-bold text-light">кОНФИГУРАТОР</h1>
+                                <p class="text-light my-3">Благодаря нашему встроенному конфигуратору вы сможете собрать ту самую, желанную сборку. Причем вам совсем не нужны будут знания в этой области.&nbsp;</p><a class="btn btn-primary btn-lg me-2" role="button" href="{{url_for('configurator')}}">Конфигуратор</a>
+                            </div>
+                        </div>
+                        <div class="col offset-xxl-2"><img src="https://digital-razor.ru/upload/resize_cache/iblock/9fe/1066_667_2/9fecb0cb484e4266bca52850ba9ac9af.png" style="width: 500px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item h-100"><img class="w-100 d-block position-absolute h-100 fit-cover" src="https://digital-razor.ru/upload/iblock/8b0/8b0dc70c5b54eafef8e498b9f41362c8.png" alt="Slide Image" style="z-index: -1;">
+                <div class="container d-flex flex-column justify-content-center h-100">
+                    <div class="row">
+                        <div class="col-md-6 col-xl-4 offset-md-2">
+                            <div style="max-width: 350px;margin-top: 90px;">
+                                <h1 class="fw-bold text-primary">INTEL CORE 13-ГО ПОКОЛЕНИЯ</h1>
+                                <p class="my-3">Свяжитесь с нашим партнером, чтобы уже сейчас опробовать новые возможности нового поколения процессоров.</p><a class="btn btn-primary btn-lg me-2" role="button" href="#">Intel</a>
+                            </div>
+                        </div>
+                        <div class="col offset-xxl-1"><img src="https://digital-razor.ru/upload/resize_cache/iblock/9e9/1080_1080_0/9e9769c36b9f66ff7487ff3a263c8958.png" style="width: 500px;height: 500px;" width="500" height="500"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
+            <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
+        </ol>
+    </div>
+    <section class="py-4 py-xl-5">
+        <div class="container h-100" id="config">
+            <div class="text-white border rounded border-0 p-4 py-5" style="background: rgb(29,30,33);">
+                <div class="row h-100">
+                    <div class="col-md-10 col-xl-8 text-center d-flex d-sm-flex d-md-flex justify-content-center align-items-center mx-auto justify-content-md-start align-items-md-center justify-content-xl-center">
+                        <div>
+                            <h1 class="text-uppercase fw-bold text-white mb-3">создайте компьютер своей мечты</h1>
+                            <p class="mb-4">Благодаря нашему встроенному конфигуратору вы сможете создать компьютер своей мечты. Для этого вам совсем не понадобятся знания в области компьютеров, ведь теперь - это наша задача.</p><a href = "{{ url_for('configurator') }}"><button class="btn btn-light fs-5 py-2 px-4" type="button">Конфигуратор</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container py-4 py-xl-5">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center text-light mx-auto">
+                <h2 class="text-light">Почему именно мы?</h2>
+                <p class="w-lg-50">Ознакомьтесь с нашими преимуществами на фоне конкурентов</p>
+            </div>
+        </div>
+        <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+            <div class="col">
+                <div class="text-center d-flex flex-column align-items-center align-items-xl-center">
+                    <div class="bs-icon-lg bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-basket-fill">
+                            <path d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717L5.07 1.243zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3z"></path>
+                        </svg></div>
+                    <div class="px-3">
+                        <h4 class="text-light">Быстрая доставка</h4>
+                        <p class="text-light">Вы не успеете моргнуть и глазом, как наш курьер уже с довольной улыбкой будет стоять у вашего дома.</p><a class="link-light" href="#delivery">Доставка</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-center d-flex flex-column align-items-center align-items-xl-center">
+                    <div class="bs-icon-lg bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-bezier">
+                            <path fill-rule="evenodd" d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"></path>
+                            <path d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z"></path>
+                        </svg></div>
+                    <div class="px-3">
+                        <h4 class="text-light">Возможность конфигуратора</h4>
+                        <p class="text-light">Возможности нашего конфигуратора ничем не ограничиваются. Идеальная сборка уже где-то рядом.</p><a class="link-light" href="{{url_for('configurator')}}">Конфигуратор</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-center d-flex flex-column align-items-center align-items-xl-center">
+                    <div class="bs-icon-lg bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person-badge">
+                            <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
+                            <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0h-7zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492V2.5z"></path>
+                        </svg></div>
+                    <div class="px-3">
+                        <h4 class="text-light">Личный кабинет</h4>
+                        <p class="text-light">Благодаря удобному личному кабинету все данные о ваших заказах и их статусе будет всегда доступны Вам.</p><a class="link-light" href="#">Личный кабинет</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="photo-gallery py-4 py-xl-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 class="text-light">Интересные сетапы</h2>
+                    <p class="text-light w-lg-50">Только посмотрите как красиво наши компьютеры сочетаются с рабочим местом</p>
+                </div>
+            </div>
+            <div class="row gx-2 gy-2 row-cols-1 row-cols-md-2 row-cols-xl-3 photos" data-bss-baguettebox="">
+                <div class="col item"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="https://sun1-55.userapi.com/impg/u3ewvfUTaLLReI3koPWtha3Qveg13N3fZgirfw/O6dtlkcaNKY.jpg?size=2560x1707&amp;quality=96&amp;sign=6f3e3d666e02645340db68041dd77edc&amp;type=album"></a></div>
+                <div class="col item"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="https://sun1-29.userapi.com/impf/c850720/v850720299/1a7105/hVSBJtgIzsE.jpg?size=2560x1920&amp;quality=96&amp;sign=171c904d1295bf5633f1af404ad8b8f5&amp;type=album"></a></div>
+                <div class="col item"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="https://sun1-54.userapi.com/impf/c854532/v854532878/d83b0/xO_vbrx3iZY.jpg?size=2560x1707&amp;quality=96&amp;sign=41ce2c809e41f8ced1d646ecc1008d8f&amp;type=album"></a></div>
+                <div class="col item"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="https://sun1-92.userapi.com/impg/xMxL9yKxbE6i0MGQPvBchVyFTsMgdE8zmQfD_g/6oEa4Mc5lng.jpg?size=2560x1920&amp;quality=96&amp;sign=cea58714484638f33b75293480256d0b&amp;type=album"></a></div>
+                <div class="col item"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="https://sun1-13.userapi.com/impf/c850436/v850436229/1a8713/ReJSTNWb8Dg.jpg?size=2560x1920&amp;quality=96&amp;sign=6a16555fd52ce0ec49d9767891e3dd4c&amp;type=album"></a></div>
+                <div class="col item"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="https://sun1-90.userapi.com/impf/c850616/v850616392/19a423/xfKqnV_AjXg.jpg?size=2560x1920&amp;quality=96&amp;sign=a223fb99b50aa5b8e7c7c577dab1a6dd&amp;type=album"></a></div>
+            </div>
+        </div>
+    </section>
+    <div class="container py-4 py-xl-5">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2 class="text-light" id="reviews">Отзывы</h2>
+            </div>
+        </div>
+        <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-lg-3">
+            <div class="col">
+                <div>
+                    <p class="bg-light border rounded border-0 border-light p-4">Невероятно отзывчивый персонал на сайте. Мало того, что решили мою проблему, так еще и скидочку небольшую предоставили!!</p>
+                    <div class="d-flex">
+                        <div>
+                            <p class="fw-bold text-primary mb-0">Michael</p>
+                            <p class="text-muted mb-0">на сайте 1 месяц</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div>
+                    <p class="bg-light border rounded border-0 border-light p-4">Заказал сборку на GenPC. Не могу оторваться теперь от своего новенького компьютера ;)</p>
+                </div>
+                <div class="d-flex" style="margin-top: 39px;">
+                    <div>
+                        <p class="fw-bold text-primary mb-0">Timur</p>
+                        <p class="text-muted mb-0">на сайте 2 года</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div>
+                    <p class="bg-light border rounded border-0 border-light p-4">Порадовало качество премиальной доставки. Компьютер привезли в срок, дак еще и в дополнительной коробке!</p>
+                    <div class="d-flex">
+                        <div>
+                            <p class="fw-bold text-primary mb-0">Alex</p>
+                            <p class="text-muted mb-0">на сайте 6 месяцев</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-4 py-xl-5">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2 class="text-light" id="delivery">Доставка</h2>
+                <p class="text-light w-lg-50">Здесь представлены все типы доставки, имеющиеся у нас</p>
+            </div>
+        </div>
+        <div class="row gy-4 gy-xl-0 row-cols-1 row-cols-md-2 row-cols-xl-3 d-xl-flex align-items-xl-center gutter-y">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body text-center p-4" style="background: #a4a4a4;">
+                        <h6 class="text-uppercase text-muted card-subtitle">МИНИМАЛЬНАЯ</h6>
+                        <h4 class="display-4 fw-bold card-title">599 RUB</h4>
+                    </div>
+                    <div class="card-footer p-4">
+                        <div>
+                            <ul class="list-unstyled">
+                                <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check-lg">
+                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
+                                        </svg></span><span>Почта России</span></li>
+                                <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check-lg">
+                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
+                                        </svg></span><span>Трек-номер</span></li>
+                                <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check-lg">
+                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
+                                        </svg></span><span>Без доп. упаковки</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-primary border-2">
+                    <div class="card-body text-center p-4" style="background: #a4a4a4;"><span class="badge rounded-pill bg-primary position-absolute top-0 start-50 translate-middle text-uppercase">сАМЫЙ ПОПУЛЯРНЫЙ</span>
+                        <h6 class="text-uppercase text-muted card-subtitle">сТАНДАРТНАЯ</h6>
+                        <h4 class="display-4 fw-bold card-title">1299 RUB</h4>
+                    </div>
+                    <div class="card-footer p-4">
+                        <div>
+                            <ul class="list-unstyled">
+                                <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check-lg">
+                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
+                                        </svg></span><span>СДЭК</span></li>
+                                <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check-lg">
+                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
+                                        </svg></span><span>Трек-номер</span></li>
+                                <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check-lg">
+                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
+                                        </svg></span><span>С дополнительной упаковкой</span></li>
+                                <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check-lg">
+                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
+                                        </svg></span><span>Фирменные коврики в комплекте</span></li>
+                                <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check-lg">
+                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
+                                        </svg></span><span>Статус заказа прямо в кабинете</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body text-center p-4" style="background: #a4a4a4;">
+                        <h6 class="text-uppercase text-muted card-subtitle">мАКСИМАЛЬНАЯ</h6>
+                        <h4 class="display-4 fw-bold card-title">1899 RUB</h4>
+                    </div>
+                    <div class="card-footer p-4">
+                        <div>
+                            <ul class="list-unstyled">
+                                <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check-lg">
+                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
+                                        </svg></span><span>Курьер, прямо до вашего дома!</span></li>
+                                <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check-lg">
+                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
+                                        </svg></span><span>Фирменные коврики в подарок</span></li>
+                                <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check-lg">
+                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
+                                        </svg></span><span>Доставка в течении 2х дней</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search_bar">
+        <h2 class="text-center text-light">Не можете что-то найти?</h2>
+        <div class="row" style="width: 100%;margin-top: 50px;margin-bottom: 50px;">
+            <div class="col-md-10 offset-md-1">
+                <div class="card m-auto" style="max-width:850px">
+                    <div class="card-body">
+                        <form method="post" action="{{ url_for('result_of_search') }}" class="d-flex align-items-center"><i class="fas fa-search d-none d-sm-block h4 text-body m-0"></i><input class="form-control form-control-lg flex-shrink-1 form-control-borderless" type="search" placeholder="Что Вы ищете?" name="searchbar"><button class="btn btn-success btn-lg" type="submit">Поиск</button></form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="text-white bg-dark">
+        <div class="container py-4 py-lg-5">
+            <div class="row justify-content-center">
+                <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
+                    <h3 class="fs-6 text-white">Сервисы</h3>
+                    <ul class="list-unstyled">
+                        <li><a class="link-light" href="#config">Конфигуратор</a></li>
+                        <li><a class="link-light" href="{{ url_for('cabinet') }}">Личный кабинет</a></li>
+                        <li><a class="link-light" href="#"></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
+                    <h3 class="fs-6 text-white">Подробнее</h3>
+                    <ul class="list-unstyled">
+                        <li><a class="link-light" href="https://vk.com">ВКонтакте</a></li>
+                        <li><a class="link-light" href="https://telegram.org">Telegram</a></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
+                    <h3 class="fs-6 text-white">Информация</h3>
+                    <ul class="list-unstyled">
+                        <li><a class="link-light" href="#delivery">Доставка</a></li>
+                        <li><a class="link-light" href="#reviews">Отзывы</a></li>
+                        <li><a class="link-light" href="{{ url_for('contacts') }}" target="_blank">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 text-center text-lg-start d-flex flex-column align-items-center order-first align-items-lg-start order-lg-last item social">
+                    <div class="fw-bold d-flex align-items-center mb-2"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pc-display fs-5">
+                                <path fill-rule="evenodd" d="M8 1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V1Zm1 13.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0Zm2 0a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0ZM9.5 1a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5ZM9 3.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5ZM1.5 2A1.5 1.5 0 0 0 0 3.5v7A1.5 1.5 0 0 0 1.5 12H6v2h-.5a.5.5 0 0 0 0 1H7v-4H1.5a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7V2H1.5Z"></path>
+                            </svg></span><span>GenPC</span></div>
+                    <p class="text-muted copyright">Качество превыше всего!</p>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between align-items-center pt-3">
+                <p class="mb-0">Copyright © 2023 GenPC</p>
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item"></li>
+                    <li class="list-inline-item"></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='bootstrap_index/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js_index/bs-init.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+    <script src="{{ url_for('static', filename='js_index/Lightbox-Gallery.js') }}"></script>
+</body>
+
+</html>

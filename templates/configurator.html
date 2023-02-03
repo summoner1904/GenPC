@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap_configurator/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_configurator/Hero-Clean-Reverse-images.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_configurator/Navbar-Centered-Links-icons.css') }}">
+</head>
+
+<body class="bg-dark">
+    <nav class="navbar navbar-light navbar-expand-md py-3" style="background: #ffffff;">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="{{url_for('index')}}"><span class="fs-2 fw-semibold">GenPC</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-3"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-3">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active link-dark rubberBand animated" href="{{url_for('contacts')}}">Контакты</a></li>
+                    <li class="nav-item"><a class="nav-link link-dark rubberBand animated" href="#delivery">Доставка</a></li>
+                    <li class="nav-item"><a class="nav-link link-dark rubberBand animated" href="#reviews">Отзывы</a></li>
+                </ul><a href ="{{url_for('cabinet')}}"><button class="btn btn-dark rubberBand animated" type="button">Личный кабинет</button></a>
+            </div>
+        </div>
+    </nav>
+
+    <style>
+        .block_img img{
+            width: 100%;
+            bottom: 30px;
+            position: relative;
+        }
+    </style>
+    <div class="block_img">
+        ffffff
+        <img src="{{ url_for('static', filename='img/banner.png') }}" alt="">
+    </div>
+    <form method="post">
+        <div class="container py-4 py-xl-5">
+            <div class="container text-light py-4 py-xl-5">
+                <div class="row gy-4 gy-md-0">
+                    <div class="col-md-6">
+                        <div class="p-xl-5 m-xl-5"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="https://cdn-icons-png.flaticon.com/512/7878/7878732.png"></div>
+                    </div>
+                    <div class="col-md-6 d-md-flex align-items-md-center">
+                        <div style="max-width: 350px;">
+                            <h2 class="text-uppercase fw-bold">Видеокарта</h2>
+                            <p class="my-3">Именно этот компонент выводит изображение на Ваш монитор. Учтите, что от этого параметра сильно зависит FPS.</p>
+                            <div class="form-check"><input checked class="form-check-input" type="radio" value = "RTX 3070 Ti" name = "gpu" id="formCheck-6"><label class="form-check-label" for="formCheck-6">GeForce RTX 3070 Ti</label></div>
+                            <div class="form-check"><input class="form-check-input" type="radio" value = "RTX 4070 Ti" name = "gpu" id="formCheck-5"><label class="form-check-label" for="formCheck-5">GeForce RTX 4070 Ti</label></div>
+                            <div class="form-check"><input class="form-check-input" type="radio" value = "RTX 4080 Ti" name = "gpu" id="formCheck-4"><label class="form-check-label" for="formCheck-4">GeForce RTX 4080 Ti</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-light py-4 py-xl-5">
+            <div class="row gy-4 gy-md-0">
+                <div class="col-md-6">
+                    <div class="p-xl-5 m-xl-5"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="https://cdn-icons-png.flaticon.com/512/1250/1250593.png"></div>
+                </div>
+                <div class="col-md-6 d-md-flex align-items-md-center">
+                    <div style="max-width: 350px;">
+                        <h2 class="text-uppercase fw-bold">Процессор</h2>
+                        <p class="my-3">Этот компонент отвечает за вычислительные процессы. Как правило, процессор выбирают надолго и редко меняют. Учтите, что от этого параметра сильно зависит FPS.</p>
+                        <div class="form-check"><input checked class="form-check-input" type="radio" value = "i5-12400"name="cpu" id="formCheck-6"><label class="form-check-label" for="formCheck-6">Intel Core i5-12400</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" value = "i7-12700F"name="cpu" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Intel Core i7-12700F</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" value = "i7-13700F"name="cpu" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Intel Core i7-13700F</label></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-light py-4 py-xl-5">
+            <div class="row gy-4 gy-md-0">
+                <div class="col-md-6">
+                    <div class="p-xl-5 m-xl-5"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="https://cdn-icons-png.flaticon.com/512/7230/7230450.png"></div>
+                </div>
+                <div class="col-md-6 d-md-flex align-items-md-center">
+                    <div style="max-width: 350px;">
+                        <h2 class="text-uppercase fw-bold">Блок питания</h2>
+                        <p class="my-3">Устройство, предназначенное для преобразования напряжения переменного тока от сети в напряжение постоянного тока с целью питания компьютера или компьютер-сервера. Не влияет на FPS.</p>
+                        <div class="form-check"><input checked class="form-check-input" type="radio" value = "500W"name="power" id="formCheck-6"><label class="form-check-label" for="formCheck-6">500W 80 Plus</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" value = "650w"name="power" id="formCheck-5"><label class="form-check-label" for="formCheck-5">650W Bronze</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" value = "750w"name="power" id="formCheck-4"><label class="form-check-label" for="formCheck-4">750W Gold</label></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-light py-4 py-xl-5">
+            <div class="row gy-4 gy-md-0">
+                <div class="col-md-6">
+                    <div class="p-xl-5 m-xl-5"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="https://cdn-icons-png.flaticon.com/512/5921/5921796.png"></div>
+                </div>
+                <div class="col-md-6 d-md-flex align-items-md-center">
+                    <div style="max-width: 350px;">
+                        <h2 class="text-uppercase fw-bold">Материнская плата</h2>
+                        <p class="my-3">Элемент компьютера, который позволяет собрать в единую систему все устройства, чтобы они стабильно работали и выдавали нужные параметры производительности.</p>
+                        <div class="form-check"><input checked class="form-check-input" type="radio" value = "Asus Prime B660" name="motherboard" id="formCheck-6"><label class="form-check-label" for="formCheck-6">Asus Prime B660</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" value = "Asus Prime B660-Plus" name="motherboard" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Asus Prime B660-PLUS</label></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-light py-4 py-xl-5">
+            <div class="row gy-4 gy-md-0">
+                <div class="col-md-6">
+                    <div class="p-xl-5 m-xl-5"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="https://cdn-icons-png.flaticon.com/512/5334/5334278.png"></div>
+                </div>
+                <div class="col-md-6 d-md-flex align-items-md-center">
+                    <div style="max-width: 350px;">
+                        <h2 class="text-uppercase fw-bold">Оперативная память</h2>
+                        <p class="my-3">Временное хранилище, в котором содержатся непосредственно те данные, которые нужны для работы программ (или игр, если комп игровой), когда компьютер функционирует.</p>
+                        <div class="form-check"><input checked class="form-check-input" type="radio" value = "16kfbr" name="ram" id="formCheck-6"><label class="form-check-label" for="formCheck-6">16GB Kingston Fury Beast RGB</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" value = "32kfbr" name="ram" id="formCheck-5"><label class="form-check-label" for="formCheck-5">32GB Kingston Fury Beast RGB</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" value = "64kfbr" name="ram" id="formCheck-4"><label class="form-check-label" for="formCheck-4">64GB Kignston Fury Beast RGB</label></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-light py-4 py-xl-5">
+            <div class="row gy-4 gy-md-0">
+                <div class="col-md-6">
+                    <div class="p-xl-5 m-xl-5"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="https://cdn-icons-png.flaticon.com/512/1606/1606079.png"></div>
+                </div>
+                <div class="col-md-6 d-md-flex align-items-md-center">
+                    <div style="max-width: 350px;">
+                        <h2 class="text-uppercase fw-bold">Накопитель памяти</h2>
+                        <p class="my-3">Компонент компьютера, который позволяет хранить данные и получать к ним доступ на долгосрочной основе.</p>
+                        <div class="form-check"><input checked class="form-check-input" type="radio" value = "1 TB" name="storage" id="formCheck-6"><label class="form-check-label" for="formCheck-6">1TB</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" value = "2 TB" name="storage" id="formCheck-5"><label class="form-check-label" for="formCheck-5">2TB</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" value = "4 TB" name="storage" id="formCheck-4"><label class="form-check-label" for="formCheck-4">4TB</label></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button_order" style="text-align: right; margin-right: 20%;">
+                    <button class = "btn btn-primary btn-lg me-2" type="submit">Заказать</button>
+                </div>
+
+        
+    </form>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

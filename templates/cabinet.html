@@ -48,7 +48,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group mb-3">
-                                    <div class="form-group mb-3"><label class="form-label" for="last_name"><br></label><label class="form-label" for="first_name"><strong>Логин</strong><br></label><input class="form-control" type="username" placeholder="{{ current_user.login}}" name="login"></div>
+                                    <div class="form-group mb-3"><label class="form-label" for="last_name"><br></label><label class="form-label" for="first_name"><strong>Логин</strong><br></label><input disabled class="form-control" type="username" placeholder="{{ current_user.login}}" name="login"></div>
                                 </div>
                             </div>
                             <div class="col">
@@ -60,7 +60,7 @@
                                 <div class="form-group mb-3"><label class="form-label" for="first_name"><strong>Прошлый пароль</strong><br></label><input class="form-control" name = 'old_password' type="password"></div>
                             </div>
                             <div class="col">
-                                <div class="form-group mb-3"><label class="form-label" for="last_name"><strong>Новый пароль</strong><br></label><input class="form-control" name = 'new_password' type="password"></div>
+                                <div class="form-group mb-3"><label class="form-label" for="last_name"><strong>Новый пароль</strong><br></label><input class="form-control" disabled name = 'new_password' type="password"></div>
                             </div>
                         </div>
                         <div class="form-group mb-3"><button class="btn btn-primary btn-sm" type="submit">Сохранить изменения</button></div>

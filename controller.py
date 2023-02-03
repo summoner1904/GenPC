@@ -69,7 +69,10 @@ def contacts():
 @login_required
 def cabinet():
     if request.method == "POST":
-        if check_data(**dict(request.form)):
+        email = request.form.get('email')
+        if check_correct_email(email):
+            current_user.email = email
+            Users.add(current_user)
             flash(
                 {"title": "Успешно!", "message": "Вы успешно изменили данные!"},
                 category="success",
@@ -85,9 +88,26 @@ def cabinet():
     return render_template("cabinet.html")
 
 
+pattern_login = r"^[a-z0-9]+$"
+pattern_email = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$"
+
+
+def check_correct_email(email):
+    if email != current_user.email:
+        if re.match(pattern_email, email) is None:
+            return flash(
+                {"title": "Ошибка!", "message": "Некорректная почта."}, category="error"
+            )
+        else:
+            return True
+    else:
+        return flash(
+            {"title": "Ошибка!", "message": "Вы ввели нынешний адрес."}, category="error"
+        )
+
+
 def check_data(login, email, password):
-    pattern_login = r"^[a-z0-9]+$"
-    pattern_email = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$"
+
     if re.match(pattern_email, email) is None:
         return flash(
             {"title": "Ошибка!", "message": "Некорректная почта."}, category="error"

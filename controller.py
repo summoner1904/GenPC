@@ -69,19 +69,29 @@ def contacts():
 @login_required
 def cabinet():
     if request.method == "POST":
+        password = request.form.get('old_password')
         email = request.form.get('email')
-        if check_correct_email(email):
-            current_user.email = email
-            Users.add(current_user)
-            flash(
-                {"title": "Успешно!", "message": "Вы успешно изменили данные!"},
-                category="success",
-            )
+        if current_user.password == password:
+            if check_correct_email(email):
+                current_user.email = email
+                Users.add(current_user)
+                flash(
+                    {"title": "Успешно!", "message": "Вы успешно изменили данные!"},
+                    category="success",
+                )
+            else:
+                flash(
+                    {
+                        "title": "Ошибка!",
+                        "message": "Проверьте корректность введенных данных.",
+                    },
+                    category="error",
+                )
         else:
             flash(
                 {
                     "title": "Ошибка!",
-                    "message": "Проверьте корректность введенных данных.",
+                    "message": "Введите текущий пароль для подтверждения.",
                 },
                 category="error",
             )

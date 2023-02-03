@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap_oreon/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_oreon/Bootstrap-4---Payment-Form.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_oreon/Hero-Clean-Reverse-images.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_oreon/Navbar-Centered-Links-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_oreon/Simple-Slider-Simple-Slider.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
+</head>
+
+<body style="background: rgb(17,17,17);">
+    <nav class="navbar navbar-light navbar-expand-md py-3" style="background: #ffffff;position: static;overflow: visible;display: block;">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="{{url_for('index')}}"><span class="fs-2 fw-semibold text-dark rubberBand animated">GenPC</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-3"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-3">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active link-dark rubberBand animated" href="{{url_for('contacts')}}">Контакты</a></li>
+                    <li class="nav-item"><a class="nav-link link-dark rubberBand animated" href="{{ url_for('index') }}">Доставка</a></li>
+                    <li class="nav-item"><a class="nav-link link-dark rubberBand animated" href="{{ url_for('index') }}">Отзывы</a></li>
+                </ul><a href ="{{url_for('cabinet')}}"><button class="btn btn-dark rubberBand animated" type="button">Личный кабинет</button></a>
+            </div>
+        </div>
+    </nav>
+    <div class="container py-4 py-xl-5">
+        <div class="row gy-4 gy-md-0">
+            <div class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
+                <div style="max-width: 350px;">
+                    <h2 class="text-uppercase fw-bold text-danger">OREON PC</h2>
+                    <p class="fs-5 text-light my-3">Стильный и производительный игровой компьютер с видеокартой NVIDIA GeForce RTX 4080 [12GB, 7680 CUDA] и процессором Intel Core i7-13700K(F) [5.4 GHz, 16 ядер]</p><a class="btn btn-danger btn-lg me-2" role="button" href="#buy">279999 RUB</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="https://digital-razor.ru/upload/iblock/6ff/6ffcfe18f20c1fec828b7e9c25bf74c9.png"></div>
+            </div>
+        </div>
+    </div>
+    <div class="simple-slider">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background: url(&quot;https://hyperpc.ru/images/product/cyber/gallery/black/hyperpc-cyber-black-build-photo-01.jpg&quot;) center center / cover no-repeat;"></div>
+                <div class="swiper-slide" style="background: url(&quot;https://hyperpc.ru/images/product/cyber/gallery/black/hyperpc-cyber-black-build-photo-03.jpg&quot;) center center / cover no-repeat;"></div>
+                <div class="swiper-slide" style="background: url(&quot;https://hyperpc.ru/images/product/cyber/gallery/black/hyperpc-cyber-black-build-photo-05.jpg&quot;) center center / cover no-repeat;"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <section class="py-4 py-xl-5">
+        <div class="container">
+            <div class="bg-dark border rounded border-0 border-dark overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <div class="text-white p-4 p-md-5">
+                            <h2 class="fw-bold text-white mb-3">ВИДЕОКАРТА NVIDIA GEFORCE RTX 4080 [12GB]</h2>
+                            <p class="mb-4"><span style="color: rgb(204, 204, 204); background-color: rgb(15, 15, 15);">NVIDIA® GeForce RTX™ 4070 Ti обеспечивает высочайшую производительность и функции, необходимые геймерам и авторам контента. Оживляйте игры и воплощайте в жизнь творческие проекты с помощью трассировки лучей и графики на основе ИИ. Видеокарта разработана на основе сверхэффективной архитектуры NVIDIA Ada Lovelace и располагает высокоскоростной видеопамятью G6X объемом 12 ГБ.</span><br></p>
+                            <div class="my-3"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 order-first order-md-last" style="min-height: 250px;"><img class="w-100 h-100 fit-cover" src="https://hyperpc.ru/cache/hp_part_img/nvidia-geforce-rtx-4090-780x439.jpg"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-4 py-xl-5">
+        <div class="container">
+            <div class="bg-dark border rounded border-0 border-dark overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <div class="text-white p-4 p-md-5">
+                            <h2 class="fw-bold text-white mb-3">ПРОЦЕССОР INTEL CORE I7-13700K(F) [5.4 GHz]</h2>
+                            <p class="mb-4"><span style="color: rgb(204, 204, 204); background-color: rgb(17, 17, 17);">Процессор Intel Core i7-13700K(F) выполнен на базе архитектуры Raptor Lake, использует техпроцесс Intel 7 и отличается высокой производительностью и эффективностью, что позволит с легкостью выполнять любые задачи. Благодаря этому данная модель может стать отличным выбором для игровых систем и мощных рабочих станций. За производительность Intel Core i7-13700K(F) отвечает 8 производительных, 8 энергоэффективных ядер и 24 потока, которые могут работать в широком диапазоне частот с возможностью дополнительного разгона за счет свободного множителя. Благодаря этому, а также большому кэшу разных уровней процессор может обеспечить высокое быстродействие в самых разных условиях.</span><br></p>
+                            <div class="my-3"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 order-first order-md-last" style="min-height: 250px;"><img class="w-100 h-100 fit-cover" src="https://hyperpc.ru/cache/hp_part_img/intel-core-i7-13th-780x439.jpg"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-4 py-xl-5">
+        <div class="container">
+            <div class="bg-dark border rounded border-0 border-dark overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <div class="text-white p-4 p-md-5">
+                            <h2 class="fw-bold text-white mb-3">МАТЕРИНСКАЯ ПЛАТА MSI PRO Z790-A [DD5, WI-FI]</h2>
+                            <p class="mb-4"><span style="color: rgb(204, 204, 204); background-color: rgb(15, 15, 15);">Материнская плата MSI PRO Z790-A WIFI — функциональная платформа с широкими возможностями конфигурации, что позволяет легко собрать производительную игровую систему или рабочую станцию.</span><br></p>
+                            <div class="my-3"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 order-first order-md-last" style="min-height: 250px;"><img class="w-100 h-100 fit-cover" src="https://hyperpc.ru/cache/hp_part_img/msi-pro-z790-a-wifi-780x439.jpg"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-4 py-xl-5">
+        <div class="container">
+            <div class="bg-dark border rounded border-0 border-dark overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <div class="text-white p-4 p-md-5">
+                            <h2 class="fw-bold text-white mb-3">ОПЕРАТИВНАЯ ПАМЯТЬ 32GB Kingston Fury Beast RGB [DD5, 5200MHz, 2x16GB]</h2>
+                            <p class="mb-4"><span style="color: rgb(204, 204, 204); background-color: rgb(15, 15, 15);">Kingston FURY™ Beast DDR5 RGB стильно выглядит и позволяет выполнять разгон на игровых платформах нового поколения с помощью передовых технологий. Оцените непревзойденную скорость DDR5 благодаря удвоенному количеству блоков памяти и длительности импульсов.</span><br></p>
+                            <div class="my-3"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 order-first order-md-last" style="min-height: 250px;"><img class="w-100 h-100 fit-cover" src="https://hyperpc.ru/cache/hp_part_img/kingston-fury-beast-rgb-ddr5-5200-2x16gb-780x439.jpg"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-4 py-xl-5">
+        <div class="container">
+            <div class="bg-dark border rounded border-0 border-dark overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <div class="text-white p-4 p-md-5">
+                            <h2 class="fw-bold text-white mb-3">БЛОК ПИТАНИЯ 850W Phanteks AMP [80+ GOLD]</h2>
+                            <p class="mb-4"><span style="color: rgb(204, 204, 204); background-color: rgb(15, 15, 15);">Phanteks AMP сертифицирован по стандарту 80 Plus Gold, имеет модульную систему подключения кабелей и выпускаются на производственных мощностях Seasonic. Предусмотрены системы защиты от перегрузки по току, превышения мощности, повышенного напряжения, короткого замыкания и перегрева.</span><br></p>
+                            <div class="my-3"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 order-first order-md-last" style="min-height: 250px;"><img class="w-100 h-100 fit-cover" src="https://hyperpc.ru/cache/hp_part_img/phanteks-amp-850w-780x439.jpg"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-4 py-xl-5">
+        <div class="container">
+            <div class="text-center p-4 p-lg-5">
+                <section class="position-relative py-4 py-xl-5">
+                    <div class="container position-relative">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                                <div class="card mb-5">
+                                    <div class="card-body p-sm-5">
+                                        <h2 class="text-center text-dark mb-4" id="buy">Купить в 1 клик</h2>
+                                        <form method="post">
+                                            <div class="mb-3"><input class="form-control" type="text" id="name-2" name="name" placeholder="Имя"></div>
+                                            <div class="mb-3"><input class="form-control" type="number" id="email-2" name="number" placeholder="Номер телефона"></div>
+                                            <div><button class="btn btn-danger d-block w-100" type="submit">Отправить</button></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/Bootstrap-4---Payment-Form.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
+    <script src="assets/js/Simple-Slider.js"></script>
+</body>
+
+</html>

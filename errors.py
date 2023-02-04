@@ -5,10 +5,10 @@ from flask import redirect, render_template, flash, url_for
 @app.errorhandler(401)
 def error401(status):
     """
-        Функция обрабатывает ошибку HTTP 401, перенаправляя пользователя на страницу авторизации.
-        :param status: int(Код ошибки)
-        :return: None
-        """
+    Функция обрабатывает ошибку HTTP 401, перенаправляя пользователя на страницу авторизации.
+    :param status: int(Код ошибки)
+    :return: None
+    """
     flash(
         {"title": "Внимание!", "message": "Необходимо авторизоваться."}, category="info"
     )

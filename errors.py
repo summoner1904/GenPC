@@ -1,4 +1,5 @@
-from app import app, render_template, redirect, url_for, flash
+from app import app
+from flask import redirect, render_template, flash, url_for
 
 
 @app.errorhandler(401)

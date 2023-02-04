@@ -1,6 +1,6 @@
 from fuzzywuzzy import process
-
-from app import db, UserMixin, app, manager
+from app import db, app, manager
+from flask_login import UserMixin
 
 
 class BaseModel:

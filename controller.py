@@ -1,7 +1,7 @@
 import re
 from flask import request, abort
 from flask_login import login_user, login_required, current_user, logout_user
-from models import Users, Support, Orders, Products
+from models import Users, Support, Orders, Products, Callback
 from errors import *
 
 
@@ -207,3 +207,11 @@ def add_database():
         return render_template("add_database.html")
     else:
         return abort(404)
+
+
+@app.route('/oreon_pc/', methods=['POST', 'GET'])
+def oreon_pc():
+    if request.method == 'POST':
+        Callback.create(**dict(request.form))
+        flash({'title': 'Успешно!', 'message': 'Мы приняли вашу заявку. Ожидайте звонка.'}, category='success')
+    return render_template('oreon.html')

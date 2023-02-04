@@ -96,6 +96,15 @@ class Products(db.Model, BaseModel):
         return result
 
 
+class Callback(db.Model, BaseModel):
+    """
+    Класс для сохранения заявок пользователей в базе данных.
+    """
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(32))
+    phone = db.Column(db.String(32))
+
+
 with app.app_context():
     db.create_all()
 

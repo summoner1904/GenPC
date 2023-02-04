@@ -94,67 +94,41 @@ def cabinet():
     :return: render_template(cabinet)
     """
     if request.method == "POST":
-        email = request.form.get("email")
-        if check_correct_email(email):
-            current_user.email = email
+        if check_new_user_data(**dict(request.form)):
             Users.add(current_user)
-            flash(
-                {"title": "Успешно!", "message": "Вы успешно изменили данные!"},
-                category="success",
-            )
-
-        password = request.form.get("old_password")
-        email = request.form.get("email")
-        if current_user.password == password:
-            if check_correct_email(email):
-                current_user.email = email
-                Users.add(current_user)
-                flash(
-                    {"title": "Успешно!", "message": "Вы успешно изменили данные!"},
-                    category="success",
-                )
-            else:
-                flash(
-                    {
-                        "title": "Ошибка!",
-                        "message": "Проверьте корректность введенных данных.",
-                    },
-                    category="error",
-                )
-        else:
-            flash(
-                {
-                    "title": "Ошибка!",
-                    "message": "Введите текущий пароль для подтверждения.",
-                },
-                category="error",
-            )
-    return render_template("cabinet.html")
+            flash({"title": "Успешно!", "message": "Данные успешно изменены."}, category="success")
+    return render_template('cabinet.html')
 
 
 pattern_login = r"^[a-z0-9]+$"
 pattern_email = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$"
 
 
-def check_correct_email(email):
-    """
-    Функция, использующаяся при проверке почты для изменения данных из личного кабинета.
-    :param email: str(Новая почта, введенная пользователем)
-    :return: Если все данные верны - True
-            Если возникли ошибки - flash с ошибкой.
-    """
-    if email != current_user.email:
-        if re.match(pattern_email, email) is None:
-            return flash(
-                {"title": "Ошибка!", "message": "Некорректная почта."}, category="error"
-            )
-        else:
+def check_new_user_data(email, old_password, new_password):
+    counter = 0
+    if current_user.password == old_password:
+        if email != '' and current_user.email != email:
+            if re.match(pattern_email, email):
+                counter += 1
+                current_user.email = email
+            else:
+                return flash({"title": "Ошибка!", "message": "Некорректная почта."}, category="error")
+        if new_password != '' and current_user.password != new_password:
+            if 4 < len(new_password) < 32:
+                current_user.password = new_password
+                counter += 1
+            else:
+                return flash(
+                    {
+                        "title": "Ошибка!",
+                        "message": "Пароль должен быть не менее 4 и не более 32 символов.",
+                    },
+                    category="error",
+                    )
+        if counter != 0:
             return True
     else:
-        return flash(
-            {"title": "Ошибка!", "message": "Вы ввели нынешний адрес."},
-            category="error",
-        )
+        return flash({"title": "Ошибка!", "message": "Текущий пароль неверный."}, category="error")
 
 
 def check_data(login, email, password):

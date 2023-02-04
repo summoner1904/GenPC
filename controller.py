@@ -1,6 +1,6 @@
 import re
-from fuzzywuzzy import process
-from app import *
+from flask import render_template, request, flash, redirect, url_for
+from flask_login import login_user, login_required, current_user, logout_user
 from models import Users, Support, Orders, Products
 from errors import *
 

@@ -56,7 +56,7 @@ def sign_in():
 @app.route("/sign_up/", methods=["POST", "GET"])
 def sign_up():
     """
-    Функция, использующаяся для регистрации пользователя. 
+    Функция, использующаяся для регистрации пользователя.
     :return: Если все данные верны, сохраняет пользователя в БД, redirect(sign_in)
     """
     if request.method == "POST":
@@ -103,8 +103,8 @@ def cabinet():
                 category="success",
             )
 
-        password = request.form.get('old_password')
-        email = request.form.get('email')
+        password = request.form.get("old_password")
+        email = request.form.get("email")
         if current_user.password == password:
             if check_correct_email(email):
                 current_user.email = email

@@ -7,6 +7,7 @@ class BaseModel:
     """
     Класс, представляющий основные методы для работы с Базой Данных.
     """
+
     def add(self):
         """
         Выполняет добавление сущности (объекта) в базу данных,
@@ -34,6 +35,7 @@ class Users(db.Model, UserMixin, BaseModel):
     """
     Класс, предоставляющий модель для хранения данных пользователя.
     """
+
     id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(32))
     password = db.Column(db.String(32))
@@ -44,6 +46,7 @@ class Support(db.Model, BaseModel):
     """
     Класс, предоставляющий модель для хранения обращений пользователей в поддержку.
     """
+
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
     name = db.Column(db.String(32))
@@ -55,6 +58,7 @@ class Orders(db.Model, BaseModel):
     """
     Класс, предоставляющий модель для хранения данных о сборках ПК пользователя.
     """
+
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
     gpu = db.Column(db.String(32))
@@ -69,6 +73,7 @@ class Products(db.Model, BaseModel):
     """
     Класс, предоставляющий модель для хранения данных о комплектующих.
     """
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(64))
     description = db.Column(db.Text)

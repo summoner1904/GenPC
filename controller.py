@@ -1,5 +1,5 @@
 import re
-from flask import request
+from flask import request, abort
 from flask_login import login_user, login_required, current_user, logout_user
 from models import Users, Support, Orders, Products
 from errors import *
@@ -218,14 +218,18 @@ def logout():
 
 
 @app.route("/add_database/", methods=["POST", "GET"])
+@login_required
 def add_database():
     """
     Используется для добавления новых записей в базу данных.
     :return: render_template(add_database)
     """
-    if request.method == "POST":
-        title = request.form.get("title")
-        price = int(request.form.get("price"))
-        description = request.form.get("description")
-        Products.create(title=title, price=price, description=description)
-    return render_template("add_database.html")
+    if current_user.login == "serjasum":
+        if request.method == "POST":
+            title = request.form.get("title")
+            price = int(request.form.get("price"))
+            description = request.form.get("description")
+            Products.create(title=title, price=price, description=description)
+        return render_template("add_database.html")
+    else:
+        return abort(404)

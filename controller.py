@@ -195,7 +195,7 @@ def logout():
 @login_required
 def add_database():
     """
-    Используется для добавления новых записей в базу данных.
+    Используется для добавления новых записей в базу данных. Доступно только администратору (логин serjasum).
     :return: render_template(add_database)
     """
     if current_user.login == "serjasum":
@@ -211,6 +211,10 @@ def add_database():
 
 @app.route('/oreon_pc/', methods=['POST', 'GET'])
 def oreon_pc():
+    """
+    Views компьютера серии Oreon PC.
+    :return: render_template(oreon)
+    """
     if request.method == 'POST':
         Callback.create(**dict(request.form))
         flash({'title': 'Успешно!', 'message': 'Мы приняли вашу заявку. Ожидайте звонка.'}, category='success')

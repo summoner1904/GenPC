@@ -1,4 +1,4 @@
-import re
+from business_logic import check_data, check_new_user_data
 from flask import request, abort
 from flask_login import login_user, login_required, current_user, logout_user
 from models import Users, Support, Orders, Products, Callback
@@ -98,76 +98,6 @@ def cabinet():
             Users.add(current_user)
             flash({"title": "Успешно!", "message": "Данные успешно изменены."}, category="success")
     return render_template('cabinet.html')
-
-
-pattern_login = r"^[a-z0-9]+$"
-pattern_email = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$"
-
-
-def check_new_user_data(email, old_password, new_password):
-    counter = 0
-    if current_user.password == old_password:
-        if email != '' and current_user.email != email:
-            if re.match(pattern_email, email):
-                counter += 1
-                current_user.email = email
-            else:
-                return flash({"title": "Ошибка!", "message": "Некорректная почта."}, category="error")
-        if new_password != '' and current_user.password != new_password:
-            if 4 < len(new_password) < 32:
-                current_user.password = new_password
-                counter += 1
-            else:
-                return flash(
-                    {
-                        "title": "Ошибка!",
-                        "message": "Пароль должен быть не менее 4 и не более 32 символов.",
-                    },
-                    category="error",
-                    )
-        if counter != 0:
-            return True
-    else:
-        return flash({"title": "Ошибка!", "message": "Текущий пароль неверный."}, category="error")
-
-
-def check_data(login, email, password):
-    """
-    Функция, использующаяся для проверки введенных пользователем данных для регистрации.
-    :param login: str(Логин пользователя)
-    :param email: str(Почта пользователя)
-    :param password: str(Пароль пользователя)
-    :return: Если возникла какая-то ошибка - False
-            Если ошибок нет, данные корректны - True
-    """
-    if re.match(pattern_email, email) is None:
-        return flash(
-            {"title": "Ошибка!", "message": "Некорректная почта."}, category="error"
-        )
-    elif Users.query.filter_by(login=login).first():
-        return flash(
-            {"title": "Ошибка!", "message": "Такой логин уже есть в системе."},
-            category="error",
-        )
-    elif Users.query.filter_by(email=email).first():
-        return flash(
-            {"title": "Ошибка!", "message": "Такая почта уже есть в системе."},
-            category="error",
-        )
-    elif re.match(pattern_login, login) is None:
-        return flash(
-            {"title": "Ошибка!", "message": "Некорректный логин."}, category="error"
-        )
-    elif len(password) < 4 or len(password) > 32:
-        return flash(
-            {
-                "title": "Ошибка!",
-                "message": "Пароль должен быть не менее 4 и не более 32 символов.",
-            },
-            category="error",
-        )
-    else:
-        return True
 
 
 @app.route("/configurator/", methods=["POST", "GET"])

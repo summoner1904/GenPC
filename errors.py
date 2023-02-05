@@ -23,3 +23,13 @@ def error404(status):
     :return: error404.html (Шаблон страницы ошибки)
     """
     return render_template("errors/error404.html")
+
+
+@app.errorhandler(429)
+def error429(status):
+    """
+    Функция отрабатывает ошибку HTTP 429.
+    :param status: int(Код ошибки)
+    :return: error429.html (Шаблон страницы ошибки)
+    """
+    return render_template("errors/error429.html")

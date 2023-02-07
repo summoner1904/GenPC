@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>GenPC | Контакты</title>
+    {{ toastr.include_jquery() }}
+    {{ toastr.include_toastr_css() }}
+    {{ toastr.message() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap_contacts/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css_contacts/Navbar-Centered-Links-icons.css') }}">
 </head>
@@ -75,6 +78,7 @@
         </div>
     </section>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+{{ toastr.include_toastr_js() }}
 </body>
 
 </html>

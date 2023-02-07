@@ -146,6 +146,9 @@ def oreon_pc():
     :return: render_template(oreon)
     """
     if request.method == 'POST':
-        Callback.create(**dict(request.form))
-        flash({'title': 'Успешно!', 'message': 'Мы приняли вашу заявку. Ожидайте звонка.'}, category='success')
+        if len(request.form.get('phone')) == 11:
+            Callback.create(**dict(request.form))
+            flash({'title': 'Успешно!', 'message': 'Мы приняли вашу заявку. Ожидайте звонка.'}, category='success')
+        else:
+            flash({'title': 'Ошибка!', 'message': 'Вы ввели некорректный номер телефона.'}, category='error')
     return render_template('oreon.html')

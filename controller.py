@@ -97,6 +97,8 @@ def cabinet():
         if check_new_user_data(**dict(request.form)):
             Users.add(current_user)
             flash({"title": "Успешно!", "message": "Данные успешно изменены."}, category="success")
+    if Orders.query.filter_by(user_id=current_user.id):
+        return render_template('cabinet.html', orders=Orders.query.filter_by(user_id=current_user.id))
     return render_template('cabinet.html')
 
 
@@ -107,6 +109,7 @@ def configurator():
     :return: render_template(configurator)
     """
     if request.method == "POST":
+        flash({'title': 'Успешно!', 'message': 'Ваш компьютер ждет вас в личном кабинете!'}, category='success')
         Orders.create(user_id=current_user.id, **dict(request.form))
     return render_template("configurator.html")
 

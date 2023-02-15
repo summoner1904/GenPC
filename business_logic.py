@@ -7,7 +7,7 @@ pattern_login = r"^[a-z0-9]+$"
 pattern_email = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$"
 
 
-def check_data(login, email, password):
+def check_data(login, email, password) -> bool:
     """
     Функция, использующаяся для проверки введенных пользователем данных для регистрации.
     :param login: str(Логин пользователя)
@@ -46,7 +46,7 @@ def check_data(login, email, password):
         return True
 
 
-def check_new_user_data(email, old_password, new_password):
+def check_new_user_data(email, old_password, new_password) -> bool:
     counter = 0
     if current_user.password == old_password:
         if email != '' and current_user.email != email:

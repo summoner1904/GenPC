@@ -8,7 +8,7 @@ class BaseModel:
     Класс, представляющий основные методы для работы с Базой Данных.
     """
 
-    def add(self):
+    def add(self) -> None:
         """
         Выполняет добавление сущности (объекта) в базу данных,
         после чего сохраняет изменения.
@@ -18,7 +18,7 @@ class BaseModel:
         db.session.commit()
 
     @classmethod
-    def create(cls, *args, **kwargs):
+    def create(cls, *args, **kwargs) -> None:
         """
         Создает новый объект нужного класса, при этом автоматически
         производит добавление в базу данных и возвращает созданный
@@ -93,6 +93,7 @@ class Products(db.Model, BaseModel):
             if i[1] > 50:
                 result_search = cls.query.filter_by(description=i[0]).all()
                 result.append(*result_search)
+        print(type(result))
         return result
 
 

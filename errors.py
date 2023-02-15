@@ -1,9 +1,9 @@
 from app import app
-from flask import redirect, render_template, flash, url_for
+from flask import redirect, render_template, flash, url_for, Response
 
 
 @app.errorhandler(401)
-def error401(status):
+def error401(status) -> Response:
     """
     Функция обрабатывает ошибку HTTP 401, перенаправляя пользователя на страницу авторизации.
     :param status: int(Код ошибки)
@@ -16,7 +16,7 @@ def error401(status):
 
 
 @app.errorhandler(404)
-def error404(status):
+def error404(status) -> str:
     """
     Функция обрабатывает ошибку HTTP 404.
     :param status: int(Код ошибки)
@@ -26,7 +26,7 @@ def error404(status):
 
 
 @app.errorhandler(429)
-def error429(status):
+def error429(status) -> str:
     """
     Функция отрабатывает ошибку HTTP 429.
     :param status: int(Код ошибки)

@@ -1,12 +1,14 @@
+from __future__ import annotations
+
 from business_logic import check_data, check_new_user_data
-from flask import request, abort
+from flask import request, abort, Response
 from flask_login import login_user, login_required, current_user, logout_user
 from models import Users, Support, Orders, Products, Callback
 from errors import *
 
 
 @app.route("/", methods=["POST", "GET"])
-def index():
+def index() -> Response | str:
     """
     Views главной страницы.
     :return: render_template(index.html)
@@ -17,7 +19,7 @@ def index():
 
 
 @app.route("/result/", methods=["POST", "GET"])
-def result_of_search():
+def result_of_search() -> str:
     """
     Views результатов поиска.
     :return: render_template(result_of_search)
@@ -28,7 +30,7 @@ def result_of_search():
 
 
 @app.route("/sign_in/", methods=["POST", "GET"])
-def sign_in():
+def sign_in() -> Response | str:
     """
     Функция, использующаяся для авторизации пользователей.
     :return: Если все данные верны, redirect(cabinet).
@@ -54,7 +56,7 @@ def sign_in():
 
 
 @app.route("/sign_up/", methods=["POST", "GET"])
-def sign_up():
+def sign_up() -> Response | str:
     """
     Функция, использующаяся для регистрации пользователя.
     :return: Если все данные верны, сохраняет пользователя в БД, redirect(sign_in)
@@ -72,7 +74,7 @@ def sign_up():
 
 @app.route("/contacts/", methods=["POST", "GET"])
 @login_required
-def contacts():
+def contacts() -> str:
     """
     Функция, использующаяся для обращений пользователей.
     :return: render_template(contacts)
@@ -88,7 +90,7 @@ def contacts():
 
 @app.route("/cabinet/", methods=["POST", "GET"])
 @login_required
-def cabinet():
+def cabinet() -> str:
     """
     Views личного кабинета. Здесь можно изменить свои данные.
     :return: render_template(cabinet)
@@ -103,7 +105,7 @@ def cabinet():
 
 
 @app.route("/configurator/", methods=["POST", "GET"])
-def configurator():
+def configurator() -> str:
     """
     Views конфигуратора. После сборки в конфигураторе - создается запись в БД.
     :return: render_template(configurator)
@@ -115,7 +117,7 @@ def configurator():
 
 
 @app.route("/logout/")
-def logout():
+def logout() -> Response:
     """
     Функция, использующаяся для выхода из своего аккаунта пользователем.
     :return: redirect(sign_in)
@@ -126,7 +128,7 @@ def logout():
 
 @app.route("/add_database/", methods=["POST", "GET"])
 @login_required
-def add_database():
+def add_database() -> Response | str:
     """
     Используется для добавления новых записей в базу данных. Доступно только администратору (логин serjasum).
     :return: render_template(add_database)
@@ -143,7 +145,7 @@ def add_database():
 
 
 @app.route('/oreon_pc/', methods=['POST', 'GET'])
-def oreon_pc():
+def oreon_pc() -> str:
     """
     Views компьютера серии Oreon PC.
     :return: render_template(oreon)

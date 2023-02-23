@@ -3,11 +3,13 @@ from flask import flash
 from models import Users
 from flask_login import current_user
 
+# Логин английскими символами + цифры от 0 до 9
 pattern_login = r"^[a-z0-9]+$"
+# Почта английскими символами + @ + . + цифры
 pattern_email = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$"
 
 
-def check_data(login, email, password) -> bool:
+def check_data(login: str, email: str, password: str) -> bool:
     """
     Функция, использующаяся для проверки введенных пользователем данных для регистрации.
     :param login: str(Логин пользователя)
@@ -46,7 +48,7 @@ def check_data(login, email, password) -> bool:
         return True
 
 
-def check_new_user_data(email, old_password, new_password) -> bool:
+def check_new_user_data(email: str, old_password: str, new_password: str) -> bool:
     """
     Функция, использующаяся при проверки обновленных данных пользователя из личного кабинета
     :param email: str(Почта пользователя)

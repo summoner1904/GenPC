@@ -112,4 +112,9 @@ with app.app_context():
 
 @manager.user_loader
 def load_user(user_id):
+    """
+    Функция для flask_login.
+    :param user_id: int (id пользователя)
+    :return: Users (класс пользователя)
+    """
     return Users.query.get(user_id)

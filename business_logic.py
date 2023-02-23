@@ -47,6 +47,14 @@ def check_data(login, email, password) -> bool:
 
 
 def check_new_user_data(email, old_password, new_password) -> bool:
+    """
+    Функция, использующаяся при проверки обновленных данных пользователя из личного кабинета
+    :param email: str(Почта пользователя)
+    :param old_password: str(Текущий пароль пользователя)
+    :param new_password: str(Новый пароль пользователя)
+    :return: Если данные корректны - True
+            Если какие-то ошибки - False
+    """
     counter = 0
     if current_user.password == old_password:
         if email != '' and current_user.email != email:

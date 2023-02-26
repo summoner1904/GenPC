@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from business_logic import check_data, check_new_user_data
-from flask import request, abort, Response
+from flask import request, abort
 from flask_login import login_user, login_required, current_user, logout_user
 from models import Users, Support, Orders, Products, Callback
 from errors import *

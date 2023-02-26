@@ -36,23 +36,21 @@ def sign_in() -> Response | str:
     :return: Если все данные верны, redirect(cabinet).
             Если данные неверные, просит ввести снова.
     """
-    if request.method == "POST":
-        login = request.form.get("login")
-        password = request.form.get("password")
-        user = Users.query.filter_by(login=login, password=password).first()
-        if user:
-            flash(
-                {"title": "Успешно!", "message": "Вы успешно вошли в аккаунт!"},
-                category="success",
-            )
-            login_user(user)
-            return redirect(url_for("cabinet"))
-        else:
-            flash(
-                {"title": "Ошибка!", "message": "Проверьте введенные данные!"},
-                category="error",
-            )
-    return render_template("sign_in.html")
+    if request.method == "GET":
+        return render_template("sign_in.html")
+    user = Users.query.filter_by(**request.form).first()
+    if user:
+        flash(
+            {"title": "Успешно!", "message": "Вы успешно вошли в аккаунт!"},
+            category="success",
+        )
+        login_user(user)
+        return redirect(url_for("cabinet"))
+    else:
+        flash(
+            {"title": "Ошибка!", "message": "Проверьте введенные данные!"},
+            category="error",
+        )
 
 
 @app.route("/sign_up/", methods=["POST", "GET"])

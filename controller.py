@@ -59,15 +59,15 @@ def sign_up() -> Response | str:
     Функция, использующаяся для регистрации пользователя.
     :return: Если все данные верны, сохраняет пользователя в БД, redirect(sign_in)
     """
-    if request.method == "POST":
-        if check_data(**dict(request.form)):
-            Users.create(**dict(request.form))
-            flash(
-                {"title": "Успешно!", "message": "Вы успешно зарегистрировались!"},
-                category="success",
-            )
-            return redirect(url_for("sign_in"))
-    return render_template("sign_up.html")
+    if request.method == "GET":
+        return render_template("sign_up.html")
+    if check_data(**dict(request.form)):
+        Users.create(**dict(request.form))
+        flash(
+            {"title": "Успешно!", "message": "Вы успешно зарегистрировались!"},
+            category="success",
+        )
+        return redirect(url_for("sign_in"))
 
 
 @app.route("/contacts/", methods=["POST", "GET"])

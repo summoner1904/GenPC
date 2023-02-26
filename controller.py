@@ -77,13 +77,13 @@ def contacts() -> str:
     Функция, использующаяся для обращений пользователей.
     :return: render_template(contacts)
     """
-    if request.method == "POST":
-        Support.create(user_id=current_user.id, **dict(request.form))
-        flash(
-            {"title": "Успешно!", "message": "Ваше обращение до нас дошло."},
-            category="success",
-        )
-    return render_template("contacts.html")
+    if request.method == "GET":
+        return render_template("contacts.html")
+    Support.create(user_id=current_user.id, **dict(request.form))
+    flash(
+        {"title": "Успешно!", "message": "Ваше обращение до нас дошло."},
+        category="success",
+    )
 
 
 @app.route("/cabinet/", methods=["POST", "GET"])

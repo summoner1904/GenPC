@@ -97,8 +97,9 @@ def cabinet() -> str:
         if check_new_user_data(**dict(request.form)):
             Users.add(current_user)
             flash({"title": "Успешно!", "message": "Данные успешно изменены."}, category="success")
-    if Orders.query.filter_by(user_id=current_user.id):
-        return render_template('cabinet.html', orders=Orders.query.filter_by(user_id=current_user.id))
+    orders = Orders.query.filter_by(user_id=current_user.id)
+    if orders:
+        return render_template('cabinet.html', orders=orders)
     return render_template('cabinet.html')
 
 

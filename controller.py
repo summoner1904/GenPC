@@ -143,6 +143,10 @@ def add_database() -> Response | str:
         return abort(404)
 
 
+#  Константа, обозначающая, какую длину должен иметь номер телефона.
+NUMBER_LENGTH = 11
+
+
 @app.route('/oreon_pc/', methods=['POST', 'GET'])
 def oreon_pc() -> str:
     """
@@ -150,7 +154,7 @@ def oreon_pc() -> str:
     :return: render_template(oreon)
     """
     if request.method == 'POST':
-        if len(request.form.get('phone')) == 11:
+        if len(request.form.get('phone')) == NUMBER_LENGTH:
             Callback.create(**dict(request.form))
             flash({'title': 'Успешно!', 'message': 'Мы приняли вашу заявку. Ожидайте звонка.'}, category='success')
         else:

@@ -18,7 +18,7 @@ def index() -> Response | str:
     return render_template("index.html")
 
 
-@app.route("/result/", methods=["POST", "GET"])
+@app.route("/result/", methods=["POST"])
 def result_of_search() -> str:
     """
     Views результатов поиска.

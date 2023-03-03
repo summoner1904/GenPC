@@ -8,7 +8,9 @@ class BaseModel:
     Класс, представляющий основные методы для работы с Базой Данных.
     """
     id = db.Column(db.Integer, primary_key=True)
-
+    email = db.Column(db.String(64))
+    name = db.Column(db.String(32))
+    login = db.Column(db.String(32))
     def add(self) -> None:
         """
         Выполняет добавление сущности (объекта) в базу данных,
@@ -36,9 +38,7 @@ class User(db.Model, UserMixin, BaseModel):
     """
     Класс, предоставляющий модель для хранения данных пользователя.
     """
-    login = db.Column(db.String(32))
     password = db.Column(db.String(32))
-    email = db.Column(db.String(64))
 
 
 class Support(db.Model, BaseModel):
@@ -47,8 +47,6 @@ class Support(db.Model, BaseModel):
     """
 
     user_id = db.Column(db.Integer)
-    name = db.Column(db.String(32))
-    email = db.Column(db.String(64))
     message = db.Column(db.Text)
 
 
@@ -96,7 +94,6 @@ class Callback(db.Model, BaseModel):
     """
     Класс для сохранения заявок пользователей в базе данных.
     """
-    name = db.Column(db.String(32))
     phone = db.Column(db.String(32))
 
 

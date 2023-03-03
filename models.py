@@ -7,6 +7,7 @@ class BaseModel:
     """
     Класс, представляющий основные методы для работы с Базой Данных.
     """
+    id = db.Column(db.Integer, primary_key=True)
 
     def add(self) -> None:
         """
@@ -35,8 +36,6 @@ class Users(db.Model, UserMixin, BaseModel):
     """
     Класс, предоставляющий модель для хранения данных пользователя.
     """
-
-    id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(32))
     password = db.Column(db.String(32))
     email = db.Column(db.String(64))
@@ -47,7 +46,6 @@ class Support(db.Model, BaseModel):
     Класс, предоставляющий модель для хранения обращений пользователей в поддержку.
     """
 
-    id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
     name = db.Column(db.String(32))
     email = db.Column(db.String(64))
@@ -59,7 +57,6 @@ class Orders(db.Model, BaseModel):
     Класс, предоставляющий модель для хранения данных о сборках ПК пользователя.
     """
 
-    id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
     gpu = db.Column(db.String(32))
     cpu = db.Column(db.String(32))
@@ -74,7 +71,6 @@ class Products(db.Model, BaseModel):
     Класс, предоставляющий модель для хранения данных о комплектующих.
     """
 
-    id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(64))
     description = db.Column(db.Text)
     price = db.Column(db.String(64))
@@ -93,7 +89,6 @@ class Products(db.Model, BaseModel):
             if i[1] > 50:
                 result_search = cls.query.filter_by(description=i[0]).all()
                 result.append(*result_search)
-        print(type(result))
         return result
 
 
@@ -101,7 +96,6 @@ class Callback(db.Model, BaseModel):
     """
     Класс для сохранения заявок пользователей в базе данных.
     """
-    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(32))
     phone = db.Column(db.String(32))
 

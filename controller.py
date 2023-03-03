@@ -58,6 +58,7 @@ def sign_in() -> Response | str:
         )
         return render_template('sign_in.html')
 
+
 @app.route('/sign_up/', methods=['POST', 'GET'])
 def sign_up() -> Response | str:
     """

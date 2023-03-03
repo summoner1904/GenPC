@@ -31,5 +31,7 @@ def error429(status: int) -> str:
     Функция отрабатывает ошибку HTTP 429.
     :param status: int(Код ошибки)
     :return: error429.html (Шаблон страницы ошибки)
+    Эта ошибка появляется, когда пользователь отправляет слишком много запросов
+    (более 30 запросов в минуту).
     """
     return render_template("errors/error429.html")

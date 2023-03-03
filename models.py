@@ -11,6 +11,7 @@ class BaseModel:
     email = db.Column(db.String(64))
     name = db.Column(db.String(32))
     login = db.Column(db.String(32))
+
     def add(self) -> None:
         """
         Выполняет добавление сущности (объекта) в базу данных,

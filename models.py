@@ -7,7 +7,10 @@ class BaseModel:
     """
     Класс, представляющий основные методы для работы с Базой Данных.
     """
-
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(64))
+    name = db.Column(db.String(32))
+    login = db.Column(db.String(32))
     def add(self) -> None:
         """
         Выполняет добавление сущности (объекта) в базу данных,
@@ -31,15 +34,11 @@ class BaseModel:
         new_object.add()
 
 
-class Users(db.Model, UserMixin, BaseModel):
+class User(db.Model, UserMixin, BaseModel):
     """
     Класс, предоставляющий модель для хранения данных пользователя.
     """
-
-    id = db.Column(db.Integer, primary_key=True)
-    login = db.Column(db.String(32))
     password = db.Column(db.String(32))
-    email = db.Column(db.String(64))
 
 
 class Support(db.Model, BaseModel):
@@ -47,19 +46,15 @@ class Support(db.Model, BaseModel):
     Класс, предоставляющий модель для хранения обращений пользователей в поддержку.
     """
 
-    id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
-    name = db.Column(db.String(32))
-    email = db.Column(db.String(64))
     message = db.Column(db.Text)
 
 
-class Orders(db.Model, BaseModel):
+class Order(db.Model, BaseModel):
     """
     Класс, предоставляющий модель для хранения данных о сборках ПК пользователя.
     """
 
-    id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
     gpu = db.Column(db.String(32))
     cpu = db.Column(db.String(32))
@@ -69,12 +64,11 @@ class Orders(db.Model, BaseModel):
     storage = db.Column(db.String(32))
 
 
-class Products(db.Model, BaseModel):
+class Product(db.Model, BaseModel):
     """
     Класс, предоставляющий модель для хранения данных о комплектующих.
     """
 
-    id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(64))
     description = db.Column(db.Text)
     price = db.Column(db.String(64))
@@ -93,7 +87,6 @@ class Products(db.Model, BaseModel):
             if i[1] > 50:
                 result_search = cls.query.filter_by(description=i[0]).all()
                 result.append(*result_search)
-        print(type(result))
         return result
 
 
@@ -101,8 +94,6 @@ class Callback(db.Model, BaseModel):
     """
     Класс для сохранения заявок пользователей в базе данных.
     """
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(32))
     phone = db.Column(db.String(32))
 
 
@@ -117,4 +108,4 @@ def load_user(user_id):
     :param user_id: int (id пользователя)
     :return: Users (класс пользователя)
     """
-    return Users.query.get(user_id)
+    return User.query.get(user_id)

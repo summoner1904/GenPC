@@ -1,6 +1,6 @@
 import re
 from flask import flash
-from models import Users
+from models import User
 from flask_login import current_user
 
 # Логин английскими символами + цифры от 0 до 9
@@ -22,12 +22,12 @@ def check_data(login: str, email: str, password: str) -> bool:
         return flash(
             {"title": "Ошибка!", "message": "Некорректная почта."}, category="error"
         )
-    elif Users.query.filter_by(login=login).first():
+    elif User.query.filter_by(login=login).first():
         return flash(
             {"title": "Ошибка!", "message": "Такой логин уже есть в системе."},
             category="error",
         )
-    elif Users.query.filter_by(email=email).first():
+    elif User.query.filter_by(email=email).first():
         return flash(
             {"title": "Ошибка!", "message": "Такая почта уже есть в системе."},
             category="error",

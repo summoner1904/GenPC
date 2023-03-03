@@ -32,7 +32,7 @@ class BaseModel:
         new_object.add()
 
 
-class Users(db.Model, UserMixin, BaseModel):
+class User(db.Model, UserMixin, BaseModel):
     """
     Класс, предоставляющий модель для хранения данных пользователя.
     """
@@ -52,7 +52,7 @@ class Support(db.Model, BaseModel):
     message = db.Column(db.Text)
 
 
-class Orders(db.Model, BaseModel):
+class Order(db.Model, BaseModel):
     """
     Класс, предоставляющий модель для хранения данных о сборках ПК пользователя.
     """
@@ -66,7 +66,7 @@ class Orders(db.Model, BaseModel):
     storage = db.Column(db.String(32))
 
 
-class Products(db.Model, BaseModel):
+class Product(db.Model, BaseModel):
     """
     Класс, предоставляющий модель для хранения данных о комплектующих.
     """
@@ -111,4 +111,4 @@ def load_user(user_id):
     :param user_id: int (id пользователя)
     :return: Users (класс пользователя)
     """
-    return Users.query.get(user_id)
+    return User.query.get(user_id)

@@ -3,7 +3,7 @@ from business_logic import check_data, check_new_user_data
 from flask import request, abort, render_template, redirect, flash, url_for, Response
 from app import app
 from flask_login import login_user, login_required, current_user, logout_user
-from models import Users, Support, Orders, Products, Callback
+from models import User, Support, Order, Product, Callback
 from errors import error429, error404, error401
 
 
@@ -25,7 +25,7 @@ def result_of_search() -> str:
     :return: render_template(result_of_search)
     """
     return render_template(
-        "result_of_search.html", result=Products.search(**dict(request.form))
+        "result_of_search.html", result=Product.search(**dict(request.form))
     )
 
 
@@ -38,7 +38,7 @@ def sign_in() -> Response | str:
     """
     if request.method == "GET":
         return render_template("sign_in.html")
-    user = Users.query.filter_by(**request.form).first()
+    user = User.query.filter_by(**request.form).first()
     if user:
         flash(
             {"title": "Успешно!", "message": "Вы успешно вошли в аккаунт!"},
@@ -62,7 +62,7 @@ def sign_up() -> Response | str:
     if request.method == "GET":
         return render_template("sign_up.html")
     if check_data(**dict(request.form)):
-        Users.create(**dict(request.form))
+        User.create(**dict(request.form))
         flash(
             {"title": "Успешно!", "message": "Вы успешно зарегистрировались!"},
             category="success",
@@ -95,9 +95,9 @@ def cabinet() -> str:
     """
     if request.method == "POST":
         if check_new_user_data(**dict(request.form)):
-            Users.add(current_user)
+            User.add(current_user)
             flash({"title": "Успешно!", "message": "Данные успешно изменены."}, category="success")
-    orders = Orders.query.filter_by(user_id=current_user.id)
+    orders = Order.query.filter_by(user_id=current_user.id)
     if orders:
         return render_template('cabinet.html', orders=orders)
     return render_template('cabinet.html')
@@ -111,7 +111,7 @@ def configurator() -> str:
     """
     if request.method == "POST":
         flash({'title': 'Успешно!', 'message': 'Ваш компьютер ждет вас в личном кабинете!'}, category='success')
-        Orders.create(user_id=current_user.id, **dict(request.form))
+        Order.create(user_id=current_user.id, **dict(request.form))
     return render_template("configurator.html")
 
 
@@ -137,7 +137,7 @@ def add_database() -> Response | str:
             title = request.form.get("title")
             price = int(request.form.get("price"))
             description = request.form.get("description")
-            Products.create(title=title, price=price, description=description)
+            Product.create(title=title, price=price, description=description)
         return render_template("add_database.html")
     else:
         return abort(404)

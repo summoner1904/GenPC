@@ -1,3 +1,8 @@
+"""
+Модуль, где находятся все основные параметры приложения.
+"""
+
+
 import uuid
 import flask_monitoringdashboard as dashboard
 from flask import Flask

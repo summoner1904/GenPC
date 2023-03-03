@@ -1,3 +1,8 @@
+"""
+Модуль с ошибками.
+"""
+
+
 from app import app
 from flask import redirect, render_template, flash, url_for, Response
 

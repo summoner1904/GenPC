@@ -1,3 +1,8 @@
+"""
+Модуль для работы с БД  и использование данных оттуда.
+"""
+
+
 from fuzzywuzzy import process
 from app import db, app, manager
 from flask_login import UserMixin

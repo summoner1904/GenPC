@@ -1,3 +1,8 @@
+"""
+Основной модуль приложения, обрабатывающий страницы.
+"""
+
+
 from __future__ import annotations
 from business_logic import check_data, check_new_user_data
 from flask import request, abort, render_template, redirect, flash, url_for, Response

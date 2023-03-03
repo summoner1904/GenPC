@@ -1,3 +1,4 @@
+import uuid
 import flask_monitoringdashboard as dashboard
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -14,7 +15,7 @@ limiter = Limiter(
     default_limits=["30 per minute"],
     storage_uri="memory://"
 )
-app.config["SECRET_KEY"] = "fAZmf248XfG"
+app.config["SECRET_KEY"] = str(uuid.uuid4())
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 db = SQLAlchemy(app)
 toastr = Toastr(app)

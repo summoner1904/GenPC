@@ -1,10 +1,10 @@
 from __future__ import annotations
-
 from business_logic import check_data, check_new_user_data
-from flask import request, abort
+from flask import request, abort, render_template, redirect, flash, url_for, Response
+from app import app
 from flask_login import login_user, login_required, current_user, logout_user
 from models import Users, Support, Orders, Products, Callback
-from errors import *
+from errors import error429, error404, error401
 
 
 @app.route("/", methods=["POST", "GET"])
@@ -18,7 +18,7 @@ def index() -> Response | str:
     return render_template("index.html")
 
 
-@app.route("/result/", methods=["POST", "GET"])
+@app.route("/result/", methods=["POST"])
 def result_of_search() -> str:
     """
     Views результатов поиска.
@@ -36,23 +36,21 @@ def sign_in() -> Response | str:
     :return: Если все данные верны, redirect(cabinet).
             Если данные неверные, просит ввести снова.
     """
-    if request.method == "POST":
-        login = request.form.get("login")
-        password = request.form.get("password")
-        user = Users.query.filter_by(login=login, password=password).first()
-        if user:
-            flash(
-                {"title": "Успешно!", "message": "Вы успешно вошли в аккаунт!"},
-                category="success",
-            )
-            login_user(user)
-            return redirect(url_for("cabinet"))
-        else:
-            flash(
-                {"title": "Ошибка!", "message": "Проверьте введенные данные!"},
-                category="error",
-            )
-    return render_template("sign_in.html")
+    if request.method == "GET":
+        return render_template("sign_in.html")
+    user = Users.query.filter_by(**request.form).first()
+    if user:
+        flash(
+            {"title": "Успешно!", "message": "Вы успешно вошли в аккаунт!"},
+            category="success",
+        )
+        login_user(user)
+        return redirect(url_for("cabinet"))
+    else:
+        flash(
+            {"title": "Ошибка!", "message": "Проверьте введенные данные!"},
+            category="error",
+        )
 
 
 @app.route("/sign_up/", methods=["POST", "GET"])
@@ -61,15 +59,15 @@ def sign_up() -> Response | str:
     Функция, использующаяся для регистрации пользователя.
     :return: Если все данные верны, сохраняет пользователя в БД, redirect(sign_in)
     """
-    if request.method == "POST":
-        if check_data(**dict(request.form)):
-            Users.create(**dict(request.form))
-            flash(
-                {"title": "Успешно!", "message": "Вы успешно зарегистрировались!"},
-                category="success",
-            )
-            return redirect(url_for("sign_in"))
-    return render_template("sign_up.html")
+    if request.method == "GET":
+        return render_template("sign_up.html")
+    if check_data(**dict(request.form)):
+        Users.create(**dict(request.form))
+        flash(
+            {"title": "Успешно!", "message": "Вы успешно зарегистрировались!"},
+            category="success",
+        )
+        return redirect(url_for("sign_in"))
 
 
 @app.route("/contacts/", methods=["POST", "GET"])
@@ -79,13 +77,13 @@ def contacts() -> str:
     Функция, использующаяся для обращений пользователей.
     :return: render_template(contacts)
     """
-    if request.method == "POST":
-        Support.create(user_id=current_user.id, **dict(request.form))
-        flash(
-            {"title": "Успешно!", "message": "Ваше обращение до нас дошло."},
-            category="success",
-        )
-    return render_template("contacts.html")
+    if request.method == "GET":
+        return render_template("contacts.html")
+    Support.create(user_id=current_user.id, **dict(request.form))
+    flash(
+        {"title": "Успешно!", "message": "Ваше обращение до нас дошло."},
+        category="success",
+    )
 
 
 @app.route("/cabinet/", methods=["POST", "GET"])
@@ -99,8 +97,9 @@ def cabinet() -> str:
         if check_new_user_data(**dict(request.form)):
             Users.add(current_user)
             flash({"title": "Успешно!", "message": "Данные успешно изменены."}, category="success")
-    if Orders.query.filter_by(user_id=current_user.id):
-        return render_template('cabinet.html', orders=Orders.query.filter_by(user_id=current_user.id))
+    orders = Orders.query.filter_by(user_id=current_user.id)
+    if orders:
+        return render_template('cabinet.html', orders=orders)
     return render_template('cabinet.html')
 
 
@@ -144,6 +143,10 @@ def add_database() -> Response | str:
         return abort(404)
 
 
+#  Константа, обозначающая, какую длину должен иметь номер телефона.
+NUMBER_LENGTH = 11
+
+
 @app.route('/oreon_pc/', methods=['POST', 'GET'])
 def oreon_pc() -> str:
     """
@@ -151,7 +154,7 @@ def oreon_pc() -> str:
     :return: render_template(oreon)
     """
     if request.method == 'POST':
-        if len(request.form.get('phone')) == 11:
+        if len(request.form.get('phone')) == NUMBER_LENGTH:
             Callback.create(**dict(request.form))
             flash({'title': 'Успешно!', 'message': 'Мы приняли вашу заявку. Ожидайте звонка.'}, category='success')
         else:

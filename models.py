@@ -49,7 +49,8 @@ class User(db.Model, UserMixin, BaseModel):
 
 class Support(db.Model, BaseModel):
     """
-    Класс, предоставляющий модель для хранения обращений пользователей в поддержку.
+    Класс, предоставляющий модель для хранения обращений
+    пользователей в поддержку.
     """
 
     user_id = db.Column(db.Integer)
@@ -58,7 +59,8 @@ class Support(db.Model, BaseModel):
 
 class Order(db.Model, BaseModel):
     """
-    Класс, предоставляющий модель для хранения данных о сборках ПК пользователя.
+    Класс, предоставляющий модель для хранения
+     данных о сборках ПК пользователя.
     """
 
     user_id = db.Column(db.Integer)

@@ -17,7 +17,8 @@ pattern_email = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$"
 
 def check_data(login: str, email: str, password: str) -> bool | flash:
     """
-    Функция, использующаяся для проверки введенных пользователем данных для регистрации.
+    Функция, использующаяся для проверки введенных пользователем
+    данных для регистрации.
     :param login: str(Логин пользователя)
     :param email: str(Почта пользователя)
     :param password: str(Пароль пользователя)
@@ -26,56 +27,70 @@ def check_data(login: str, email: str, password: str) -> bool | flash:
     """
     if re.match(pattern_email, email) is None:
         return flash(
-            {"title": "Ошибка!", "message": "Некорректная почта."}, category="error"
+            {"title": "Ошибка!", "message": "Некорректная почта."},
+            category="error",
         )
     elif User.query.filter_by(login=login).first():
         return flash(
-            {"title": "Ошибка!", "message": "Такой логин уже есть в системе."},
+            {"title": "Ошибка!",
+             "message": "Такой логин уже есть в системе."},
             category="error",
         )
     elif User.query.filter_by(email=email).first():
         return flash(
-            {"title": "Ошибка!", "message": "Такая почта уже есть в системе."},
+            {"title": "Ошибка!",
+             "message": "Такая почта уже есть в системе."},
             category="error",
         )
     elif re.match(pattern_login, login) is None:
         return flash(
-            {"title": "Ошибка!", "message": "Некорректный логин."}, category="error"
+            {"title": "Ошибка!", "message": "Некорректный логин."},
+            category="error",
         )
     elif len(password) < 4 or len(password) > 32:
         return flash(
             {
                 "title": "Ошибка!",
-                "message": "Пароль должен быть не менее 4 и не более 32 символов.",
+                "message": "Пароль должен быть не "
+                           "менее 4 и не более 32 символов.",
             },
             category="error",
         )
     return True
 
 
-def check_new_user_data(email: str, old_password: str, new_password: str) -> bool | flash:
+def check_new_user_data(
+    email: str, old_password: str, new_password: str
+) -> bool | flash:
     """
-    Функция, использующаяся при проверки обновленных данных пользователя из личного кабинета
+    Функция, использующаяся при проверки обновленных
+    данных пользователя из личного кабинета
     :param email: str(Почта пользователя)
     :param old_password: str(Текущий пароль пользователя)
     :param new_password: str(Новый пароль пользователя)
     :return: Если данные корректны - True
             Если какие-то ошибки - Flash уведомление
     """
-    print(current_user)
-    print(current_user.password)
-    print(old_password)
     if current_user.password == old_password:
-        if new_password != '':
+        if new_password != "":
             if 4 < len(new_password) < 32:
                 current_user.password = new_password
             else:
-                return flash({'title': 'Ошибка!', 'message': 'Некорретный пароль!'}, 'error')
-        if email != '':
+                return flash(
+                    {"title": "Ошибка!", "message": "Некорретный пароль!"},
+                    "error",
+                )
+        if email != "":
             if re.match(pattern_email, email) is not None:
                 current_user.email = email
             else:
-                return flash({'title': 'Ошибка!', 'message': 'Некорректная почта!'}, 'error')
+                return flash(
+                    {"title": "Ошибка!", "message": "Некорректная почта!"},
+                    "error",
+                )
         User.add(current_user)
     else:
-        return flash({'title': 'Ошибка', 'message': 'Текущий пароль неверный!'}, 'error')
+        return flash(
+            {"title": "Ошибка", "message": "Текущий пароль неверный!"},
+            "error"
+        )

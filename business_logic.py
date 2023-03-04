@@ -1,3 +1,8 @@
+"""
+Модуль с бизнес-логикой. Используется для проверки корректности данных.
+"""
+
+
 import re
 from flask import flash
 from models import User

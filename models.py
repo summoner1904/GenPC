@@ -1,3 +1,8 @@
+"""
+Модуль для работы с БД  и использование данных оттуда.
+"""
+
+
 from fuzzywuzzy import process
 from app import db, app, manager
 from flask_login import UserMixin
@@ -11,6 +16,7 @@ class BaseModel:
     email = db.Column(db.String(64))
     name = db.Column(db.String(32))
     login = db.Column(db.String(32))
+
     def add(self) -> None:
         """
         Выполняет добавление сущности (объекта) в базу данных,

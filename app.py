@@ -1,3 +1,8 @@
+"""
+Модуль, где находятся все основные параметры приложения.
+"""
+
+
 import uuid
 import flask_monitoringdashboard as dashboard
 from flask import Flask
@@ -12,11 +17,11 @@ app = Flask(__name__)
 limiter = Limiter(
     get_remote_address,
     app=app,
-    default_limits=["30 per minute"],
-    storage_uri="memory://"
+    default_limits=['30 per minute'],
+    storage_uri='memory://'
 )
-app.config["SECRET_KEY"] = str(uuid.uuid4())
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+app.config['SECRET_KEY'] = str(uuid.uuid4())
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
 toastr = Toastr(app)
 manager = LoginManager(app)

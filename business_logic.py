@@ -3,6 +3,7 @@
 """
 
 
+from __future__ import annotations
 import re
 from flask import flash
 from models import User
@@ -14,13 +15,13 @@ pattern_login = r"^[a-z0-9]+$"
 pattern_email = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$"
 
 
-def check_data(login: str, email: str, password: str) -> bool:
+def check_data(login: str, email: str, password: str) -> bool | flash:
     """
     Функция, использующаяся для проверки введенных пользователем данных для регистрации.
     :param login: str(Логин пользователя)
     :param email: str(Почта пользователя)
     :param password: str(Пароль пользователя)
-    :return: Если возникла какая-то ошибка - False
+    :return: Если возникла какая-то ошибка - Flash-уведомление
             Если ошибок нет, данные корректны - True
     """
     if re.match(pattern_email, email) is None:
@@ -49,40 +50,32 @@ def check_data(login: str, email: str, password: str) -> bool:
             },
             category="error",
         )
-    else:
-        return True
+    return True
 
 
-def check_new_user_data(email: str, old_password: str, new_password: str) -> bool:
+def check_new_user_data(email: str, old_password: str, new_password: str) -> bool | flash:
     """
     Функция, использующаяся при проверки обновленных данных пользователя из личного кабинета
     :param email: str(Почта пользователя)
     :param old_password: str(Текущий пароль пользователя)
     :param new_password: str(Новый пароль пользователя)
     :return: Если данные корректны - True
-            Если какие-то ошибки - False
+            Если какие-то ошибки - Flash уведомление
     """
-    counter = 0
+    print(current_user)
+    print(current_user.password)
+    print(old_password)
     if current_user.password == old_password:
-        if email != '' and current_user.email != email:
-            if re.match(pattern_email, email):
-                counter += 1
-                current_user.email = email
-            else:
-                return flash({"title": "Ошибка!", "message": "Некорректная почта."}, category="error")
-        if new_password != '' and current_user.password != new_password:
+        if new_password != '':
             if 4 < len(new_password) < 32:
                 current_user.password = new_password
-                counter += 1
             else:
-                return flash(
-                    {
-                        "title": "Ошибка!",
-                        "message": "Пароль должен быть не менее 4 и не более 32 символов.",
-                    },
-                    category="error",
-                    )
-        if counter != 0:
-            return True
+                return flash({'title': 'Ошибка!', 'message': 'Некорретный пароль!'}, 'error')
+        if email != '':
+            if re.match(pattern_email, email) is not None:
+                current_user.email = email
+            else:
+                return flash({'title': 'Ошибка!', 'message': 'Некорректная почта!'}, 'error')
+        User.add(current_user)
     else:
-        return flash({"title": "Ошибка!", "message": "Текущий пароль неверный."}, category="error")
+        return flash({'title': 'Ошибка', 'message': 'Текущий пароль неверный!'}, 'error')
